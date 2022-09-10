@@ -64,6 +64,25 @@
     </nav>
 
     <div class="container pb-5">
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3 offset-9">
+              <select
+                id="orderBy"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option value="" selected>Ordenar por...</option>
+                <option value="price-asc">Precio ascendente</option>
+                <option value="price-desc">Precio descendente</option>
+                <option value="name-asc">Nombre ascendente</option>
+                <option value="name-desc">Nombre descendente</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="productContainer" class="row"></div>
     </div>
 

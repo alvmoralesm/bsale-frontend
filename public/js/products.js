@@ -5,6 +5,11 @@ const productsSection = document.getElementById("productsSection"); // nav secti
 
 const searchBox = document.getElementById("searchBox"); //searchBox, for later retrieval of its value
 
+const order = document.getElementById("orderBy"); //
+
+let orderBy = "";
+let sort = "";
+
 //asynchronous function that returns all the products throught an API call, after returning it fills the array of products that we defined
 const getProducts = async () => {
   fetch("http://localhost:3001/api/v1/products/")
@@ -45,7 +50,28 @@ const searchProduct = (searchValue) => {
     });
 };
 
-//
+//function that brings us our products sorted
+const getSortedProducts = async () => {
+  let apiUrl = ""; //we initialize our API url as an empty string
+
+  //we evaluate if there is a categoryId
+  if (!categoryId || categoryId == "") {
+    apiUrl = `http://localhost:3001/api/v1/products?orderBy=${orderBy}&sort=${sort}`;
+  } else {
+    //if there is a categoryId we change a litte the url and pass the categoryId to sort the products obtained by that category
+    apiUrl = `http://localhost:3001/api/v1/categories/${categoryId}/products?orderBy=${orderBy}&sort=${sort}`;
+  }
+  fetch(apiUrl)
+    .then((data) => {
+      return data.json();
+    })
+    .then((products) => {
+      clearElement("productContainer"); //we clear our container
+      fillProducts(products); //then fill it with our new sorted products
+    });
+};
+
+//we add an event listener to de nav item that'll display all of our products
 searchBox.addEventListener("keyup", (e) => {
   console.log(e.target.value);
   searchProduct(e.target.value);
@@ -56,4 +82,20 @@ productsSection.addEventListener("click", () => {
   categoryId = ""; //we pass an empty string because where not filtering by category, this comes in handy for the search functionality
   clearElement("productContainer");
   getProducts();
+});
+
+//we add and event listener to our select filter
+order.addEventListener("change", (e) => {
+  //we evaluate if the selected option has a value, if truthy we fill and split or variables for future sorting, if falsy we fill them as empty strings
+  if (e.target.value !== "" || e.target.value) {
+    const splitValue = e.target.value.split("-"); //we split the value because we need to handle it in the query as two separate values
+    orderBy = splitValue[0];
+    sort = splitValue[1].toUpperCase();
+  } else {
+    orderBy = "";
+    sort = "";
+  }
+
+  //we call our sort product function
+  getSortedProducts();
 });
