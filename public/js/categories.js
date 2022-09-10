@@ -1,6 +1,7 @@
 //we define and initialize variables/constants
 const categoriesList = document.getElementById("categoriesList"); //the categoriesLis variable that'll contain the different categories of products
 let categories; //we initialize this variable for later use
+let categoryId = ""; //we initialize this variable for later use
 
 //asynchronous function that returns all the categories through an API call, after returning it fills the array of products that we defined
 const getCategories = async () => {
@@ -40,7 +41,7 @@ const getProductsByCategory = async (categoryId) => {
 const eventListenerToCategories = (list) => {
   list.forEach((category) => {
     category.addEventListener("click", () => {
-      const categoryId = category.id.slice(-1); //we define the categoryId and get only the last character which corresponds to the categoryId
+      categoryId = category.id.slice(-1); //we define the categoryId and get only the last character which corresponds to the categoryId
 
       getProductsByCategory(categoryId); //we call the function that makes the API call getting products by the categoryId, we pass the categoryId to make it work
     });

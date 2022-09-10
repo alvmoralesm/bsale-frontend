@@ -36,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a id="productsSection" class="nav-link">Productos</a>
+              <a id="productsSection" class="nav-link">Todos Los Productos</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -45,22 +45,20 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Categor&iacute;as
+                Por Categor&iacute;a
               </a>
               <ul id="categoriesList" class="dropdown-menu"></ul>
             </li>
           </ul>
-          <form class="d-flex" role="search">
+          <div class="d-flex" role="search">
             <input
+              id="searchBox"
               class="form-control me-2"
               type="search"
               placeholder="Buscar..."
               aria-label="Buscar"
             />
-            <button class="btn btn-outline-success" type="submit">
-              Buscar
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </nav>
