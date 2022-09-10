@@ -9,7 +9,6 @@ const getProducts = async () => {
     })
     .then((products) => {
       fillProducts(products);
-      console.log(products);
     });
 };
 

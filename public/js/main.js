@@ -4,6 +4,11 @@ const formatter = new Intl.NumberFormat("es-CL", {
   currency: "CLP",
 });
 
+//function to capitalize the first character of a string
+const capitalizeFirstChar = (string) => {
+  return string[0].toUpperCase() + string.slice(1).toLowerCase();
+};
+
 //function that creates the different elements that'll contain the product, when used we pass the parameters of the table into the card to fill it
 const createCard = (productName, productPrice, productImg) => {
   let divCol = document.createElement("div");
@@ -40,5 +45,23 @@ const createCard = (productName, productPrice, productImg) => {
   productContainer.append(divCol);
 };
 
+//function that creates the different elements that'll contain the product, when used we pass the parameters of the table into the card to fill it
+const createNavCategory = (categoryId, categoryName) => {
+  //the structure is in this particular way because it is following how you create a list item in a dropdown according to Bootstrap 5
+  let li = document.createElement("li");
+  let a = document.createElement("a");
+
+  a.classList.add("dropdown-item");
+  a.id = `category-id-${categoryId}`;
+  a.innerHTML = categoryName;
+
+  li.append(a);
+
+  categoriesList.append(li);
+};
+
 //event listener that gets triggered when all dom content is loaded
-window.addEventListener("DOMContentLoaded", getProducts);
+window.addEventListener("DOMContentLoaded", () => {
+  getProducts();
+  getCategories();
+});
