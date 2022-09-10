@@ -1,5 +1,6 @@
-//we define and initialize the productContainer variable that'll contain the products when filled
-const productContainer = document.getElementById("productContainer");
+//we define and initialize variables/constants
+const productContainer = document.getElementById("productContainer"); //the productContainer variable that'll contain the products when filled
+const productsSection = document.getElementById("productsSection"); // nav section that contains all products
 
 //asynchronous function that returns all the products throught an API call, after returning it fills the array of products that we defined
 const getProducts = async () => {
@@ -24,3 +25,9 @@ const fillProducts = (productsList) => {
     );
   });
 };
+
+//we add an event listener to de nav item that'll display all of our products
+productsSection.addEventListener("click", () => {
+  clearElement("productContainer");
+  getProducts();
+});

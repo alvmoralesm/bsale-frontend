@@ -60,6 +60,11 @@ const createNavCategory = (categoryId, categoryName) => {
   categoriesList.append(li);
 };
 
+//function that clears a determined element by id, in this case we'll use it to clear the productContainer
+const clearElement = (eleId) => {
+  document.getElementById(eleId).innerHTML = "";
+};
+
 //event listener that gets triggered when all dom content is loaded
 window.addEventListener("DOMContentLoaded", () => {
   getProducts();
