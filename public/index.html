@@ -65,20 +65,29 @@
 
     <div class="container pb-5">
       <div class="card mt-3">
-        <div class="card-body">
+        <div class="card-body shadow">
           <div class="row">
-            <div class="col-3 offset-9">
+            <div class="col-lg-9 col-md-6 col-12 my-auto">
+              <h2 class="fw-bold" id="productsTitle">Productos</h2>
+              <h6 id="categoryName" class="text-muted"></h4>
+            </div>
+            <div class="form-floating col-lg-3 col-md-6 col-12">
               <select
                 id="orderBy"
+                name="orderBy"
                 class="form-select"
-                aria-label="Default select example"
+                aria-label="productFilter"
               >
-                <option value="" selected>Ordenar por...</option>
+                <option value="" selected>
+                  Selecciona una opci&oacute;n...
+                </option>
+                <option value="discount-desc">Descuento</option>
                 <option value="price-asc">Precio ascendente</option>
                 <option value="price-desc">Precio descendente</option>
                 <option value="name-asc">Nombre ascendente</option>
                 <option value="name-desc">Nombre descendente</option>
               </select>
+              <label for="orderBy">Ordenar por...</label>
             </div>
           </div>
         </div>

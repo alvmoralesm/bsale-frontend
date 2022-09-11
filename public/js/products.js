@@ -11,7 +11,7 @@ let orderBy = "";
 let sort = "";
 
 //asynchronous function that returns all the products throught an API call, after returning it fills the array of products that we defined
-const getProducts = async () => {
+const getProducts = () => {
   fetch("http://localhost:3001/api/v1/products/")
     .then((data) => {
       return data.json();
@@ -27,6 +27,7 @@ const fillProducts = (productsList) => {
     createCard(
       product.name,
       product.price,
+      product.discount,
       product.url_image === null || !product.url_image
         ? "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg" //we ask if the instance of the product contains image, if not we fill it with another one that displays that no image could be found
         : product.url_image
@@ -51,7 +52,7 @@ const searchProduct = (searchValue) => {
 };
 
 //function that brings us our products sorted
-const getSortedProducts = async () => {
+const getSortedProducts = () => {
   let apiUrl = ""; //we initialize our API url as an empty string
 
   //we evaluate if there is a categoryId
@@ -73,7 +74,6 @@ const getSortedProducts = async () => {
 
 //we add an event listener to de nav item that'll display all of our products
 searchBox.addEventListener("keyup", (e) => {
-  console.log(e.target.value);
   searchProduct(e.target.value);
 });
 

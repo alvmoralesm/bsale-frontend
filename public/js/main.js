@@ -10,7 +10,7 @@ const capitalizeFirstChar = (string) => {
 };
 
 //function that creates the different elements that'll contain the product, when used we pass the parameters of the table into the card to fill it
-const createCard = (productName, productPrice, productImg) => {
+const createCard = (productName, productPrice, productDiscount, productImg) => {
   let divCol = document.createElement("div");
   divCol.classList.add("col-lg-3");
   divCol.classList.add("col-md-6");
@@ -32,7 +32,27 @@ const createCard = (productName, productPrice, productImg) => {
   cardTitle.classList.add("card-title");
   cardTitle.innerHTML = productName;
 
-  let cardPrice = document.createElement("p");
+  let cardPrice = "";
+  let cardPriceDiscounted = "";
+
+  if (productDiscount > 0) {
+    const newPrice = productPrice - productPrice * (productDiscount / 100);
+
+    cardPrice = document.createElement("del");
+
+    cardPriceDiscounted = document.createElement("p");
+
+    cardPriceDiscounted.classList.add("card-text");
+    cardPriceDiscounted.classList.add("text-danger");
+    cardPriceDiscounted.classList.add("fw-bold");
+    cardPriceDiscounted.classList.add("fs-5");
+    cardPriceDiscounted.style.marginBottom = "0";
+    cardPriceDiscounted.innerHTML = formatter.format(newPrice); //we apply the discount
+
+    cardPrice.classList.add("text-muted");
+  } else {
+    cardPrice = document.createElement("p");
+  }
   cardPrice.classList.add("card-text");
   cardPrice.innerHTML = formatter.format(productPrice);
 
@@ -40,6 +60,7 @@ const createCard = (productName, productPrice, productImg) => {
   divCard.append(cardImg);
   divCard.append(divCardBody);
   divCardBody.append(cardTitle);
+  divCardBody.append(cardPriceDiscounted);
   divCardBody.append(cardPrice);
 
   productContainer.append(divCol);

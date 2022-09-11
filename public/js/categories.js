@@ -4,7 +4,7 @@ let categories; //we initialize this variable for later use
 let categoryId = ""; //we initialize this variable for later use
 
 //asynchronous function that returns all the categories through an API call, after returning it fills the array of products that we defined
-const getCategories = async () => {
+const getCategories = () => {
   fetch("http://localhost:3001/api/v1/categories/")
     .then((data) => {
       return data.json();
@@ -26,7 +26,7 @@ const fillCategories = (categoriesList) => {
 };
 
 //asynchronous function that returns all the products by categoryId which we pass as an entry parameter for the function, all of this through an API call
-const getProductsByCategory = async (categoryId) => {
+const getProductsByCategory = (categoryId) => {
   fetch(`http://localhost:3001/api/v1/categories/${categoryId}/products`)
     .then((data) => {
       return data.json();
@@ -34,7 +34,26 @@ const getProductsByCategory = async (categoryId) => {
     .then((products) => {
       clearElement("productContainer"); //we clear the current products]
       fillProducts(products); //we call the function that fills our products passing the products on this API call
+      getCategoryById();
     });
+};
+
+//function that returns the category by id which is defined as a global variable and passed as an entry parameter
+const getCategoryById = () => {
+  if (categoryId || categoryId !== "") {
+    fetch(`http://localhost:3001/api/v1/categories/${categoryId}`)
+      .then((data) => {
+        return data.json();
+      })
+      .then((category) => {
+        fillCategoryName(capitalizeFirstChar(category[0].name));
+      });
+  }
+};
+
+//function that fills our element that'll contain our category name as a subtitle
+const fillCategoryName = (categoryName) => {
+  document.getElementById("categoryName").innerHTML = categoryName;
 };
 
 //we add an event listener for each category on the html
