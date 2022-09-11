@@ -20,13 +20,20 @@ const createCard = (productName, productPrice, productDiscount, productImg) => {
   divCard.classList.add("card");
   divCard.classList.add("shadow");
   divCard.classList.add("mt-3");
+  divCard.style.minHeight = "470px";
 
   let cardImg = document.createElement("img");
   cardImg.classList.add("card-img-top");
   cardImg.src = productImg;
+  cardImg.style.maxHeight = "350px";
 
   let divCardBody = document.createElement("div");
   divCardBody.classList.add("card-body");
+  divCardBody.classList.add("d-flex");
+
+  let divCardBodyRow = document.createElement("div");
+  divCardBodyRow.classList.add("row");
+  divCardBodyRow.classList.add("mt-auto");
 
   let cardTitle = document.createElement("h5");
   cardTitle.classList.add("card-title");
@@ -59,9 +66,10 @@ const createCard = (productName, productPrice, productDiscount, productImg) => {
   divCol.append(divCard);
   divCard.append(cardImg);
   divCard.append(divCardBody);
-  divCardBody.append(cardTitle);
-  divCardBody.append(cardPriceDiscounted);
-  divCardBody.append(cardPrice);
+  divCardBodyRow.append(cardTitle);
+  divCardBodyRow.append(cardPriceDiscounted);
+  divCardBodyRow.append(cardPrice);
+  divCardBody.append(divCardBodyRow);
 
   productContainer.append(divCol);
 };

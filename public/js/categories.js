@@ -63,6 +63,8 @@ const eventListenerToCategories = (list) => {
       categoryId = category.id.slice(-1); //we define the categoryId and get only the last character which corresponds to the categoryId
 
       getProductsByCategory(categoryId); //we call the function that makes the API call getting products by the categoryId, we pass the categoryId to make it work
+
+      order.value = "";
     });
   });
 };
