@@ -12,7 +12,7 @@ let sort = "";
 
 //asynchronous function that returns all the products throught an API call, after returning it fills the array of products that we defined
 const getProducts = () => {
-  fetch("http://localhost:3001/api/v1/products/")
+  fetch("https://bsale-api-am.herokuapp.com/api/v1/products")
     .then((data) => {
       return data.json();
     })
@@ -37,7 +37,7 @@ const fillProducts = (productsList) => {
 
 //we make the call to our API passing the search paramaters
 const searchProduct = (searchValue) => {
-  fetch("http://localhost:3001/api/v1/products/search/", {
+  fetch("https://bsale-api-am.herokuapp.com/api/v1/products/search/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ searchValue: searchValue, categoryId: categoryId }),
@@ -57,10 +57,10 @@ const getSortedProducts = () => {
 
   //we evaluate if there is a categoryId
   if (!categoryId || categoryId == "") {
-    apiUrl = `http://localhost:3001/api/v1/products?orderBy=${orderBy}&sort=${sort}`;
+    apiUrl = `https://bsale-api-am.herokuapp.com/api/v1/products?orderBy=${orderBy}&sort=${sort}`;
   } else {
     //if there is a categoryId we change a litte the url and pass the categoryId to sort the products obtained by that category
-    apiUrl = `http://localhost:3001/api/v1/categories/${categoryId}/products?orderBy=${orderBy}&sort=${sort}`;
+    apiUrl = `https://bsale-api-am.herokuapp.com/api/v1/categories/${categoryId}/products?orderBy=${orderBy}&sort=${sort}`;
   }
   fetch(apiUrl)
     .then((data) => {

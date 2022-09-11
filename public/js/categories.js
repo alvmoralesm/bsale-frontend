@@ -5,7 +5,7 @@ let categoryId = ""; //we initialize this variable for later use
 
 //asynchronous function that returns all the categories through an API call, after returning it fills the array of products that we defined
 const getCategories = () => {
-  fetch("http://localhost:3001/api/v1/categories/")
+  fetch("https://bsale-api-am.herokuapp.com/api/v1/categories/")
     .then((data) => {
       return data.json();
     })
@@ -27,7 +27,9 @@ const fillCategories = (categoriesList) => {
 
 //asynchronous function that returns all the products by categoryId which we pass as an entry parameter for the function, all of this through an API call
 const getProductsByCategory = (categoryId) => {
-  fetch(`http://localhost:3001/api/v1/categories/${categoryId}/products`)
+  fetch(
+    `https://bsale-api-am.herokuapp.com/api/v1/categories/${categoryId}/products`
+  )
     .then((data) => {
       return data.json();
     })
@@ -41,7 +43,7 @@ const getProductsByCategory = (categoryId) => {
 //function that returns the category by id which is defined as a global variable and passed as an entry parameter
 const getCategoryById = () => {
   if (categoryId || categoryId !== "") {
-    fetch(`http://localhost:3001/api/v1/categories/${categoryId}`)
+    fetch(`https://bsale-api-am.herokuapp.com/api/v1/categories/${categoryId}`)
       .then((data) => {
         return data.json();
       })
