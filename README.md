@@ -56,7 +56,7 @@ First of all you'll need to have up and running the backend that is consumed by 
 
 ## Deployed <a name = "deployed"></a>
 
-<p style="font-weight: normal; font-size: 2.2vh">This web app was deployed using <a href="https://www.heroku.com/">Heroku</a> you can access the deployed web app using the following link <a href="https://bsale-app-am.herokuapp.com/">https://bsale-api-am.herokuapp.com/</a>.</p>
+<p style="font-weight: normal; font-size: 2.2vh">This web app was deployed using <a href="https://www.heroku.com/">Heroku</a> you can access the deployed web app using the following link <a href="https://bsale-app-am.herokuapp.com/">https://bsale-app-am.herokuapp.com/</a>.</p>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
