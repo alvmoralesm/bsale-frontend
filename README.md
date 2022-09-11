@@ -52,7 +52,7 @@ npm start
 
 ## Prerequisites <a name = "prerequisites"></a>
 
-First of all you'll need to have up and running the backend that is consumed by this web app. You can find the backend <a href="https://github.com/alvmoralesm/bsale-backend">here</a> with its documentation that'll help you set it up properly. After you've done, you can continue with this. You'll also need to have installed <a href="https://nodejs.org/en/">Node.js</a> in your local machine.
+First of all you'll need to have up and running the backend that is consumed by this web app. You can find the backend <a href="https://github.com/alvmoralesm/bsale-backend">here</a> with its documentation that'll help you set it up properly. After you've done it, you can continue with this. You'll also need to have installed <a href="https://nodejs.org/en/">Node.js</a> in your local machine.
 
 ## Deployed <a name = "deployed"></a>
 
